@@ -3,13 +3,35 @@
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/index.ts",
+    "inspector": "bunx @eslint/config-inspector"
   },
+  "author": "",
+  "license": "MIT",
   "dependencies": {
-    "elysia": "latest"
+    "@elysiajs/cors": "^1.2.0",
+    "@elysiajs/swagger": "^1.2.0",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.38.4",
+    "elysia": "latest",
+    "elysia-helmet": "^1.0.1",
+    "pg": "^8.13.1"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "@eslint/js": "^9.18.0",
+    "@types/pg": "^8.11.10",
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "@typescript-eslint/parser": "^6.8.0",
+    "bun-types": "latest",
+    "drizzle-kit": "^0.30.2",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "globals": "^15.14.0",
+    "prettier": "^3.0.3",
+    "tsx": "^4.19.2",
+    "typescript-eslint": "^8.21.0"
   },
   "module": "src/index.js"
 }

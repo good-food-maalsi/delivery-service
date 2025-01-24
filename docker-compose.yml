@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+    delivery-service:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: delivery-service
+        container_name: delivery-service
+        command: npm run start
+        volumes:
+            - ./:/app
+        ports:
+            - "3003:8080"
+        environment:
+            - NODE_ENV=development
+            - PORT=8080
+        networks:
+            - good-food
+
+networks:
+    good-food:
+        external: true
