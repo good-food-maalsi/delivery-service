@@ -1,7 +1,7 @@
-import {DeliveryEntity} from "@entities/delivery.entity";
-import {DeliveryDTO} from "@dto/delivery.dto";
-import {AppDataSource} from "@utils/database/data-source";
-import {Repository} from "typeorm";
+import { DeliveryEntity } from "@entities/delivery.entity";
+import { DeliveryDTO } from "@dto/delivery.dto";
+import { AppDataSource } from "@utils/database/data-source";
+import { Repository } from "typeorm";
 
 export class DeliveryServices extends Repository<DeliveryEntity> {
     constructor() {

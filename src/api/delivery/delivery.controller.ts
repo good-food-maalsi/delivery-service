@@ -1,12 +1,12 @@
-import {createElysia} from "@utils/elysia.create";
+import { createElysia } from "@utils/elysia.create";
 
-import {DeliveryServices} from "./delivery.service";
-import {DeliveryEntity} from "@entities/delivery.entity";
-import {DeliveryDTO, DeliveryObject} from "@dto/delivery.dto";
+import { DeliveryServices } from "./delivery.service";
+import { DeliveryEntity } from "@entities/delivery.entity";
+import { DeliveryDTO, DeliveryObject } from "@dto/delivery.dto";
 
 const _deliveryServices: DeliveryServices = new DeliveryServices();
 
-export const DeliveryController = createElysia({prefix: "/delivery"}).guard(
+export const DeliveryController = createElysia({ prefix: "/delivery" }).guard(
     // {
     //      async beforeHandle({ set, jwtAccess, cookie }) {
     //          const isAuth = await isAuthenticated(jwtAccess, cookie);
@@ -30,14 +30,14 @@ export const DeliveryController = createElysia({prefix: "/delivery"}).guard(
 
             .post(
                 "/",
-                async ({body}): Promise<DeliveryEntity> => {
+                async ({ body }): Promise<DeliveryEntity> => {
                     console.log("@POST /delivery");
-                    const deliveryDto : DeliveryDTO = body;
+                    const deliveryDto: DeliveryDTO = body;
 
                     return await _deliveryServices.createOne(deliveryDto);
                 },
                 {
-                    body: DeliveryObject
+                    body: DeliveryObject,
                 },
-            )
+            ),
 );

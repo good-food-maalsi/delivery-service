@@ -1,13 +1,19 @@
-import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn,
+} from "typeorm";
 
 export enum StatusEnum {
     PENDING = "pending",
     IN_PROGRESS = "in_progress",
-    DELIVERED = "delivered"
+    DELIVERED = "delivered",
 }
 
 @Entity({
-    name: "deliveries"
+    name: "deliveries",
 })
 export class DeliveryEntity {
     @PrimaryGeneratedColumn("uuid")
@@ -22,7 +28,7 @@ export class DeliveryEntity {
     @Column({
         type: "enum",
         enum: StatusEnum,
-        default: StatusEnum.PENDING
+        default: StatusEnum.PENDING,
     })
     status: string;
 

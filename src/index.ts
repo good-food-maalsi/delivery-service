@@ -7,13 +7,15 @@ import { cors } from "@elysiajs/cors";
 // import { auth } from "@auth/auth.controller";
 // import { jwtAccessSetup, jwtRefreshSetup } from "@auth/guards/setup.jwt";
 
-import {apiRoutes} from "@api/index";
-import {AppDataSource} from "@utils/database/data-source";
+import { apiRoutes } from "@api/index";
+import { AppDataSource } from "@utils/database/data-source";
 const api = new Elysia();
 
-AppDataSource.initialize().then(() => {
-    console.log("Database connected");
-}).catch((e) => console.log(e));
+AppDataSource.initialize()
+    .then(() => {
+        console.log("Database connected");
+    })
+    .catch((e) => console.log(e));
 
 // api.use(jwtAccessSetup).use(jwtRefreshSetup).use(cookie());
 
@@ -35,5 +37,5 @@ api.get("/", () => "Welcome to Elysia!");
 api.listen(process.env.PORT || 8080);
 
 console.log(
-  `🦊 Elysia is running at ${api.server?.hostname}:${api.server?.port}`
+    `🦊 Elysia is running at ${api.server?.hostname}:${api.server?.port}`,
 );
