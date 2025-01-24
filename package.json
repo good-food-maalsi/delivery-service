@@ -3,13 +3,36 @@
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/index.ts",
+    "inspector": "bunx @eslint/config-inspector",
+    "migration:generate": "bunx typeorm-ts-node-commonjs migration:generate ./src/utils/database/migrations/migration -d ./src/utils/database/data-source.ts ",
+    "migration:run": "bunx typeorm-ts-node-commonjs migration:run -d ./src/utils/database/data-source.ts"
   },
+  "author": "",
+  "license": "MIT",
   "dependencies": {
-    "elysia": "latest"
+    "@elysiajs/cors": "^1.2.0",
+    "@elysiajs/swagger": "^1.2.0",
+    "elysia": "latest",
+    "elysia-helmet": "^2.0.0",
+    "pg": "^8.13.1",
+    "typeorm": "^0.3.20"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "@eslint/js": "^9.18.0",
+    "@types/pg": "^8.11.11",
+    "@typescript-eslint/eslint-plugin": "8.21.0",
+    "@typescript-eslint/parser": "8.21.0",
+    "bun-types": "latest",
+    "drizzle-kit": "^0.30.2",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "globals": "^15.14.0",
+    "prettier": "^3.4.2",
+    "tsx": "^4.19.2",
+    "typescript-eslint": "^8.21.0"
   },
   "module": "src/index.js"
 }
