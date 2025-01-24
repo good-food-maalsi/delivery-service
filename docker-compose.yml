@@ -7,7 +7,6 @@ services:
             dockerfile: Dockerfile
         image: delivery-service
         container_name: delivery-service
-        command: npm run start
         volumes:
             - ./:/app
         ports:

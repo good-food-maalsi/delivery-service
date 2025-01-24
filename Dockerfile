@@ -1,6 +1,6 @@
-FROM node
+FROM oven/bun:canary
 WORKDIR /app
 COPY package.json /app
-RUN npm install
+RUN bun install
 COPY . /app
-CMD ["npm","run","start"]
+CMD ["bun","run","dev"]
