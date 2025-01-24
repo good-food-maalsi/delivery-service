@@ -7,7 +7,7 @@ import { cors } from "@elysiajs/cors";
 // import { auth } from "@auth/auth.controller";
 // import { jwtAccessSetup, jwtRefreshSetup } from "@auth/guards/setup.jwt";
 
-import {apiRoutes} from "@api/index";
+import { apiRoutes } from "@api/index";
 
 const api = new Elysia();
 
@@ -31,5 +31,5 @@ api.get("/", () => "Welcome to Elysia!");
 api.listen(process.env.PORT || 8080);
 
 console.log(
-  `🦊 Elysia is running at ${api.server?.hostname}:${api.server?.port}`
+    `🦊 Elysia is running at ${api.server?.hostname}:${api.server?.port}`,
 );

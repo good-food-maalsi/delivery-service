@@ -4,7 +4,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.ts",
-    "inspector": "bunx @eslint/config-inspector"
+    "inspector": "bunx @eslint/config-inspector",
+    "lint": "eslint \"{src,apps,libs}/**/*.ts\" --fix",
+    "format": "prettier --write \"src/**/*.ts\""
   },
   "author": "",
   "license": "MIT",
@@ -14,22 +16,22 @@
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.38.4",
     "elysia": "latest",
-    "elysia-helmet": "^1.0.1",
+    "elysia-helmet": "^2.0.0",
     "pg": "^8.13.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.18.0",
-    "@types/pg": "^8.11.10",
-    "@typescript-eslint/eslint-plugin": "^6.8.0",
-    "@typescript-eslint/parser": "^6.8.0",
+    "@types/pg": "^8.11.11",
+    "@typescript-eslint/eslint-plugin": "^8.21.0",
+    "@typescript-eslint/parser": "^8.21.0",
     "bun-types": "latest",
     "drizzle-kit": "^0.30.2",
     "eslint": "^9.18.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.1",
-    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
     "globals": "^15.14.0",
-    "prettier": "^3.0.3",
+    "prettier": "^3.4.2",
     "tsx": "^4.19.2",
     "typescript-eslint": "^8.21.0"
   },

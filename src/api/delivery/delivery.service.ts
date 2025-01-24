@@ -1,7 +1,7 @@
-import {Delivery} from "@models/database/delivery";
-import {db} from "@utils/database";
-import {deliveriesSchema} from "@utils/database/schema";
-import {DeliveryDTO} from "@models/dto/delivery.dto";
+import { Delivery } from "@models/database/delivery";
+import { db } from "@utils/database";
+import { deliveriesSchema } from "@utils/database/schema";
+import { DeliveryDTO } from "@models/dto/delivery.dto";
 
 export class DeliveryServices {
     _database;
@@ -15,7 +15,10 @@ export class DeliveryServices {
     }
 
     async create(delivery: DeliveryDTO): Promise<Delivery> {
-        const result = await this._database.insert(deliveriesSchema).values(delivery).returning();
+        const result = await this._database
+            .insert(deliveriesSchema)
+            .values(delivery)
+            .returning();
         return result[0];
     }
 }

@@ -1,10 +1,23 @@
-import {pgTable, uuid, varchar, point, date, pgEnum} from "drizzle-orm/pg-core";
-import {sql} from "drizzle-orm";
+import {
+    pgTable,
+    uuid,
+    varchar,
+    point,
+    date,
+    pgEnum,
+} from "drizzle-orm/pg-core";
+import { sql } from "drizzle-orm";
 
-export const statusEnum = pgEnum("status", ["pending", "inProgress", "delivered"]);
+export const statusEnum = pgEnum("status", [
+    "pending",
+    "inProgress",
+    "delivered",
+]);
 
 export const deliveriesSchema = pgTable("deliveries", {
-    id: uuid('uuid2').default(sql`gen_random_uuid()`).primaryKey(),
+    id: uuid("uuid2")
+        .default(sql`gen_random_uuid()`)
+        .primaryKey(),
     shop_name: varchar({ length: 255 }).notNull(),
     comment: varchar({ length: 255 }),
     status: statusEnum().default("pending"),
@@ -13,5 +26,7 @@ export const deliveriesSchema = pgTable("deliveries", {
     deliverer_id: uuid(),
     user_id: uuid().notNull(),
     created_at: date().defaultNow(),
-    updated_at: date().defaultNow().$onUpdate(() => new Date().toDateString())
+    updated_at: date()
+        .defaultNow()
+        .$onUpdate(() => new Date().toDateString()),
 });
