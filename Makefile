@@ -9,3 +9,6 @@ stop:
 install:
 	docker network create good-food
 	docker volume create rabbitmq-data
+
+test:
+	npm run test
