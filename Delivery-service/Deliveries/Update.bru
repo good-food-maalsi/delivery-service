@@ -1,0 +1,17 @@
+meta {
+  name: Update Delivery
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{baseUrl}}/delivery/delivery_id_here
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "status": "delivered"
+  }
+}

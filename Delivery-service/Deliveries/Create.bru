@@ -1,0 +1,23 @@
+meta {
+  name: Create Delivery
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/delivery
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "shop_name": "Test Shop",
+    "comment": "Test Comment",
+    "status": "pending",
+    "shop_location": "POINT(0 0)",
+    "user_location": "POINT(0 0)",
+    "deliverer_id": "uuid-here",
+    "user_id": "uuid-here"
+  }
+}

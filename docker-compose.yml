@@ -7,17 +7,34 @@ services:
             dockerfile: Dockerfile
         image: delivery-service
         container_name: delivery-service
-        command: npm run start
+        command: bun run start
         volumes:
             - ./:/app
         ports:
             - "3003:8080"
+        env_file:
+            - .env
+        networks:
+            - good-food
+
+    postgres:
+        image: postgres:15
+        container_name: delivery-postgres
+        restart: always
         environment:
-            - NODE_ENV=development
-            - PORT=8080
+            POSTGRES_USER: ${DB_USER}
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+            POSTGRES_DB: ${DB_NAME}
+        ports:
+            - "5432:5432"
+        volumes:
+            - pg_data:/var/lib/postgresql/data
         networks:
             - good-food
 
 networks:
     good-food:
         external: true
+
+volumes:
+    pg_data:

@@ -1,0 +1,15 @@
+meta {
+  name: Get All Deliveries
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/delivery
+  body: none
+  auth: none
+}
+
+vars:pre-request {
+  baseUrl: http://localhost:3003
+}

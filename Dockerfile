@@ -1,6 +1,6 @@
-FROM node
+FROM oven/bun:debian
 WORKDIR /app
-COPY package.json /app
-RUN npm install
-COPY . /app
-CMD ["npm","run","start"]
+COPY package.json bun.lockb ./
+RUN bun install
+COPY . .
+CMD ["bun", "run", "start"]
