@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: delivery-service
+    labels:
+        app: delivery-service
+spec:
+    replicas: 1
+    revisionHistoryLimit: 3
+    selector:
+        matchLabels:
+            app: delivery-service
+    template:
+        metadata:
+            labels:
+                app: delivery-service
+        spec:
+            imagePullSecrets:
+                - name: scw-registry-secret
+            containers:
+                - name: delivery-service
+                  image: rg.fr-par.scw.cloud/good-food-container-registry/delivery-service:latest
+                  ports:
+                      - containerPort: 8080
+                  envFrom:
+                      - configMapRef:
+                            name: delivery-service-config
+                      - secretRef:
+                            name: delivery-service-db-secret
+                  resources:
+                      requests:
+                          memory: "128Mi"
+                          cpu: "100m"
+                      limits:
+                          memory: "512Mi"
+                          cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: delivery-service
+spec:
+    selector:
+        app: delivery-service
+    ports:
+        - protocol: TCP
+          port: 8080
+          targetPort: 8080

@@ -52,3 +52,6 @@ package-lock.json
 volumes
 **/*.bun
 /.env
+
+# Kubernetes secrets (applied manually, not via ArgoCD)
+k8s-secrets/
