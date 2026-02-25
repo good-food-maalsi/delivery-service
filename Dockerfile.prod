@@ -3,7 +3,7 @@ FROM oven/bun:1-debian
 COPY good-food-contracts /good-food-contracts
 WORKDIR /app
 COPY package.json bun.lockb* ./
-RUN bun install --production
+RUN npm install --omit=dev
 COPY . .
 EXPOSE 8080
 CMD ["bun", "run", "src/index.ts"]
