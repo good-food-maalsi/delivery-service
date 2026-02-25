@@ -25,7 +25,11 @@ startOrderCreatedConsumer().catch((error) => {
 import { authMiddleware } from "@good-food/utils";
 
 // api.use(jwtAccessSetup).use(jwtRefreshSetup).use(cookie());
-api.use(authMiddleware);
+try {
+    api.use(authMiddleware);
+} catch (error) {
+    console.error("Auth middleware init failed, continuing without it:", error);
+}
 
 //Security;
 api.use(
