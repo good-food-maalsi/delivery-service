@@ -3,6 +3,7 @@ FROM oven/bun:1-debian
 COPY good-food-contracts /good-food-contracts
 WORKDIR /app
 COPY package.json bun.lockb* ./
+RUN apt-get update && apt-get install -y npm && rm -rf /var/lib/apt/lists/*
 RUN npm install --omit=dev
 COPY . .
 EXPOSE 8080
