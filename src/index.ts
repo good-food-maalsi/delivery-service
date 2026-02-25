@@ -17,7 +17,10 @@ AppDataSource.initialize()
     })
     .catch((e) => console.log(e));
 
+import { authMiddleware } from "@good-food/utils";
+
 // api.use(jwtAccessSetup).use(jwtRefreshSetup).use(cookie());
+api.use(authMiddleware);
 
 //Security;
 api.use(
