@@ -9,6 +9,7 @@ import { cors } from "@elysiajs/cors";
 
 import { apiRoutes } from "@api/index";
 import { AppDataSource } from "@utils/database/data-source";
+import { startOrderCreatedConsumer } from "./messaging/order-created.consumer";
 const api = new Elysia();
 
 AppDataSource.initialize()
@@ -16,6 +17,10 @@ AppDataSource.initialize()
         console.log("Database connected");
     })
     .catch((e) => console.log(e));
+
+startOrderCreatedConsumer().catch((error) => {
+    console.error("Failed to start delivery RabbitMQ consumer:", error);
+});
 
 import { authMiddleware } from "@good-food/utils";
 

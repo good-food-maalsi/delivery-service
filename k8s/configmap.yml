@@ -8,3 +8,5 @@ data:
     DB_HOST: "delivery-postgres"
     DB_PORT: "5432"
     DB_NAME: "delivery_db"
+    RABBITMQ_HOST: "rabbitmq"
+    RABBITMQ_PORT: "5672"
