@@ -17,6 +17,12 @@ AppDataSource.initialize()
     })
     .catch((e) => console.log(e));
 
+// Hardcoded JWT_PUBLIC_KEY_BASE64 as requested to fix SPKI formatting issue
+process.env.JWT_PUBLIC_KEY_BASE64 = `-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEwHwFKvvE0vjcJ8sbWzuupIIwIRmw
+04OvPHNrTvGmM0Zr6Q45boKo4InZMVwLrzXfI9e3SQRFQ7LToT0OLKrf+Q==
+-----END PUBLIC KEY-----`;
+
 import { authMiddleware } from "@good-food/utils";
 
 // api.use(jwtAccessSetup).use(jwtRefreshSetup).use(cookie());
