@@ -10,11 +10,10 @@ RUN bun run build
 # 2. Build the main application
 WORKDIR /app
 COPY good-food-contracts /good-food-contracts
-COPY delivery-service/package.json ./
+COPY package.json ./
 RUN apt-get update && apt-get install -y npm && rm -rf /var/lib/apt/lists/*
 RUN npm install --omit=dev
-COPY delivery-service .
+COPY . .
 
 EXPOSE 8080
-CMD ["bun", "run", "src/index.ts"]
 CMD ["bun", "run", "src/index.ts"]
