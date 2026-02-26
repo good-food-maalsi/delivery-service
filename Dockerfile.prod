@@ -1,11 +1,20 @@
 # === Production Dockerfile ===
 FROM oven/bun:1-debian
-COPY good-food-contracts /good-food-contracts
+
+# 1. First build the utils package
 COPY utils /utils
+WORKDIR /utils
+RUN bun install
+RUN bun run build
+
+# 2. Build the main application
 WORKDIR /app
+COPY good-food-contracts /good-food-contracts
 COPY delivery-service/package.json delivery-service/bun.lockb* ./
 RUN apt-get update && apt-get install -y npm && rm -rf /var/lib/apt/lists/*
 RUN npm install --omit=dev
-COPY . .
+COPY delivery-service .
+
 EXPOSE 8080
+CMD ["bun", "run", "src/index.ts"]
 CMD ["bun", "run", "src/index.ts"]
