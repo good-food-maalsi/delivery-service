@@ -17,6 +17,20 @@ services:
         networks:
             - good-food
 
+    delivery-consumer:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: delivery-consumer
+        container_name: delivery-consumer
+        command: bun run start:consumer
+        volumes:
+            - ./:/app
+        env_file:
+            - .env
+        networks:
+            - good-food
+
     postgres:
         image: postgres:15
         container_name: delivery-postgres

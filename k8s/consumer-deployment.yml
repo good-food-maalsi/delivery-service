@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: delivery-consumer
+    labels:
+        app: delivery-consumer
+spec:
+    replicas: 1
+    revisionHistoryLimit: 3
+    selector:
+        matchLabels:
+            app: delivery-consumer
+    template:
+        metadata:
+            labels:
+                app: delivery-consumer
+        spec:
+            imagePullSecrets:
+                - name: scw-registry-secret
+            containers:
+                - name: delivery-consumer
+                  image: rg.fr-par.scw.cloud/good-food-container-registry/delivery-service:latest
+                  imagePullPolicy: Always
+                  command: ["bun", "run", "src/consumer.ts"]
+                  resources:
+                      requests:
+                          memory: "128Mi"
+                          cpu: "10m"
+                      limits:
+                          memory: "256Mi"
+                          cpu: "100m"
+                  envFrom:
+                      - configMapRef:
+                            name: delivery-service-config
+                      - secretRef:
+                            name: delivery-service-db-secret
+                      - secretRef:
+                            name: rabbitmq-secret

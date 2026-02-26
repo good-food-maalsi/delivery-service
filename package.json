@@ -4,6 +4,7 @@
   "scripts": {
     "test": "bun test",
     "start": "bun run src/index.ts",
+    "start:consumer": "bun run src/consumer.ts",
     "dev": "bun run --watch src/index.ts",
     "inspector": "bunx @eslint/config-inspector",
     "lint": "eslint \"{src,apps,libs}/**/*.ts\" --fix",
