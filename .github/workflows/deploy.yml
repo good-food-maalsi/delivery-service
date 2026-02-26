@@ -28,6 +28,12 @@ jobs:
                   repository: good-food-maalsi/good-food-contracts
                   path: good-food-contracts
 
+            - name: Checkout utils
+              uses: actions/checkout@v4
+              with:
+                  repository: good-food-maalsi/utils
+                  path: utils
+
             - name: Build and tag Docker image
               run: |
                   docker build -f Dockerfile.prod \
