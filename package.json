@@ -17,7 +17,7 @@
   "dependencies": {
     "@elysiajs/cors": "^1.2.0",
     "@elysiajs/swagger": "^1.2.0",
-    "@good-food/utils": "^1.1.0",
+    "@good-food/utils": "file:../utils",
     "elysia": "latest",
     "elysia-helmet": "^2.0.0",
     "pg": "^8.13.1",

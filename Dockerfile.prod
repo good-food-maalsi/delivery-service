@@ -1,8 +1,9 @@
 # === Production Dockerfile ===
 FROM oven/bun:1-debian
 COPY good-food-contracts /good-food-contracts
+COPY utils /utils
 WORKDIR /app
-COPY package.json bun.lockb* ./
+COPY delivery-service/package.json delivery-service/bun.lockb* ./
 RUN apt-get update && apt-get install -y npm && rm -rf /var/lib/apt/lists/*
 RUN npm install --omit=dev
 COPY . .
